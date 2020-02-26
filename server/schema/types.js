@@ -14,6 +14,9 @@ const Book = require('../db/mongo/models/books')
 /// MySql
 const Stars = require('../db/mysql/models/stars')
 
+//els
+const eslRun = require('../db/els/els')
+
 const BookType = new GraphQLObjectType({
   name: 'Book',
   fields: () => ({
@@ -37,6 +40,19 @@ const BookType = new GraphQLObjectType({
           }
         })
         return res[0]
+      }
+    },
+    movie: {
+      type: MovieType,
+      resolve: async (parent, args) => {
+        // return db.authors.find(item => item.id === parent.author_id)
+        console.log('movie', parent)
+        const movieId = parent.movieId
+        const query = eslRun.buildQuery(movieId)
+        console.log('query', query)
+        const res = await eslRun.run(query)
+        console.log(res)
+        return res[0]._source
       }
     }
   })
@@ -67,8 +83,18 @@ const StarsType = new GraphQLObjectType({
   })
 })
 
+const MovieType = new GraphQLObjectType({
+  name: 'Movies',
+  fields: () => ({
+    id: { type: GraphQLID },
+    title: { type: GraphQLString },
+    year: { type: GraphQLInt }
+  })
+})
+
 module.exports = {
   AuthorType,
   BookType,
-  StarsType
+  StarsType,
+  MovieType
 }

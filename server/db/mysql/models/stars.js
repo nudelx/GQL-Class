@@ -5,7 +5,6 @@ const check = async () => {
   await sequelize.sync()
   console.log('MySql Connected')
 }
-console.log('sequelize', sequelize)
 
 const Stars = sequelize.define(
   'stars',
