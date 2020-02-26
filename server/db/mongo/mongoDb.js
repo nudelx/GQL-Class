@@ -12,6 +12,4 @@ const connectDb = () => {
   return mongoose
 }
 
-connectDb()
-
 module.exports = connectDb

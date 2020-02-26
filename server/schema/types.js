@@ -46,12 +46,8 @@ const BookType = new GraphQLObjectType({
       type: MovieType,
       resolve: async (parent, args) => {
         // return db.authors.find(item => item.id === parent.author_id)
-        console.log('movie', parent)
-        const movieId = parent.movieId
-        const query = eslRun.buildQuery(movieId)
-        console.log('query', query)
+        const query = eslRun.buildQuery(parent.movieId)
         const res = await eslRun.run(query)
-        console.log(res)
         return res[0]._source
       }
     }
