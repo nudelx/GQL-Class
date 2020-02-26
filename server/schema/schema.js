@@ -8,7 +8,11 @@ const {
   GraphQLList
 } = graphql
 
-const db = require('../db/db.js')
+// const db = require('../db/db.js')
+
+/// mongo
+const Book = require('../db/models/books')
+const Author = require('../db/models/author')
 
 const BookType = new GraphQLObjectType({
   name: 'Book',
@@ -47,26 +51,26 @@ const RootQuery = new GraphQLObjectType({
       type: BookType,
       args: { id: { type: GraphQLID } },
       resolve: (parent, args) => {
-        return db.books.find(item => item.id === args.id)
+        // return db.books.find(item => item.id === args.id)
       }
     },
     author: {
       type: AuthorType,
       args: { id: { type: GraphQLID } },
       resolve: (parent, args) => {
-        return db.authors.find(item => item.id === args.id)
+        // return db.authors.find(item => item.id === args.id)
       }
     },
     books: {
       type: new GraphQLList(BookType),
       resolve: (parent, args) => {
-        return db.books
+        // return db.books
       }
     },
     authors: {
       type: new GraphQLList(AuthorType),
       resolve: (parent, args) => {
-        return db.authors
+        // return db.authors
       }
     }
   }
