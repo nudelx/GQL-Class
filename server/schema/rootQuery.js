@@ -2,8 +2,8 @@ const graphql = require('graphql')
 const { GraphQLObjectType, GraphQLID, GraphQLList } = graphql
 const { BookType, AuthorType } = require('./types')
 /// mongo
-const Author = require('../db/models/author')
-const Book = require('../db/models/books')
+const Author = require('../db/mongo/models/author')
+const Book = require('../db/mongo/models/books')
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',

@@ -7,8 +7,12 @@ const {
   GraphQLInt
 } = graphql
 
-const Author = require('../db/models/author')
-const Book = require('../db/models/books')
+/// mongo
+const Author = require('../db/mongo/models/author')
+const Book = require('../db/mongo/models/books')
+
+/// MySql
+const Stars = require('../db/mysql/models/stars')
 
 const BookType = new GraphQLObjectType({
   name: 'Book',
@@ -21,6 +25,18 @@ const BookType = new GraphQLObjectType({
       resolve: (parent, args) => {
         // return db.authors.find(item => item.id === parent.author_id)
         return Author.findById(parent.authorId)
+      }
+    },
+    stars: {
+      type: StarsType,
+      resolve: async (parent, args) => {
+        // return db.authors.find(item => item.id === parent.author_id)
+        const res = await Stars.findAll({
+          where: {
+            bookId: parent._id.toString()
+          }
+        })
+        return res[0]
       }
     }
   })
@@ -39,6 +55,15 @@ const AuthorType = new GraphQLObjectType({
         return Book.find({ authorId: parent.id })
       }
     }
+  })
+})
+
+const StarsType = new GraphQLObjectType({
+  name: 'Stars',
+  fields: () => ({
+    id: { type: GraphQLID },
+    stars: { type: GraphQLInt },
+    bookId: { type: GraphQLString }
   })
 })
 

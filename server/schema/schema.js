@@ -2,7 +2,7 @@ const graphql = require('graphql')
 const { GraphQLSchema } = graphql
 const RootQuery = require('./rootQuery')
 const Mutation = require('./mutation')
-const connectDb = require('../db/mongoDb')
+const connectDb = require('../db/mongo/mongoDb')
 connectDb()
 
 // const db = require('../db/db.js')

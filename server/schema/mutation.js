@@ -8,8 +8,8 @@ const {
 } = graphql
 const { BookType, AuthorType } = require('./types')
 
-const Author = require('../db/models/author')
-const Book = require('../db/models/books')
+const Author = require('../db/mongo/models/author')
+const Book = require('../db/mongo/models/books')
 
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
