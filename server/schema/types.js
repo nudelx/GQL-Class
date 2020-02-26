@@ -69,5 +69,6 @@ const StarsType = new GraphQLObjectType({
 
 module.exports = {
   AuthorType,
-  BookType
+  BookType,
+  StarsType
 }

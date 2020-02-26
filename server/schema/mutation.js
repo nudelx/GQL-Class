@@ -6,10 +6,11 @@ const {
   GraphQLID,
   GraphQLNonNull
 } = graphql
-const { BookType, AuthorType } = require('./types')
+const { BookType, AuthorType, StarsType } = require('./types')
 
 const Author = require('../db/mongo/models/author')
 const Book = require('../db/mongo/models/books')
+const Stars = require('../db/mysql/models/stars')
 
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -44,6 +45,23 @@ const Mutation = new GraphQLObjectType({
           authorId
         })
         return book.save()
+      }
+    },
+
+    addStar: {
+      type: StarsType,
+      args: {
+        bookId: { type: new GraphQLNonNull(GraphQLString) },
+        stars: { type: new GraphQLNonNull(GraphQLInt) }
+      },
+      resolve: async (parent, args) => {
+        const { bookId, stars } = args
+        console.log('sss', bookId, stars)
+        const star = await Stars.create({
+          bookId: `${bookId}`,
+          stars
+        })
+        return star
       }
     }
   }
