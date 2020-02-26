@@ -12,7 +12,6 @@ const RootQuery = new GraphQLObjectType({
       type: BookType,
       args: { id: { type: GraphQLID } },
       resolve: (parent, args) => {
-        // return db.books.find(item => item.id === args.id)
         return Book.findById(args.id)
       }
     },
@@ -20,21 +19,18 @@ const RootQuery = new GraphQLObjectType({
       type: AuthorType,
       args: { id: { type: GraphQLID } },
       resolve: (parent, args) => {
-        // return db.authors.find(item => item.id === args.id)
         return Author.findById(args.id)
       }
     },
     books: {
       type: new GraphQLList(BookType),
       resolve: (parent, args) => {
-        // return db.books
         return Book.find({})
       }
     },
     authors: {
       type: new GraphQLList(AuthorType),
       resolve: (parent, args) => {
-        // return db.authors
         return Author.find({})
       }
     }
