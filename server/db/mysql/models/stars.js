@@ -1,9 +1,10 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('../mysqlDb')
+const chalk = require('chalk')
 
 const check = async () => {
+  console.log(chalk.hex('#009432').inverse(' MySql connected \n'))
   await sequelize.sync()
-  console.log('MySql Connected')
 }
 
 const Stars = sequelize.define(

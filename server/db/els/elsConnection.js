@@ -1,4 +1,5 @@
 const elasticsearch = require('elasticsearch')
+const chalk = require('chalk')
 
 class ElsConnectionPool extends elasticsearch.ConnectionPool {
   markAlive(connection) {
@@ -22,5 +23,5 @@ const els = {
     return this.els.search(query)
   }
 }
-console.log('Els Connected')
+console.log(chalk.hex('#009432').inverse(' Els Connected \n'))
 module.exports = els
