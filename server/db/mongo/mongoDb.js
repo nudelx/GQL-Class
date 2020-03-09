@@ -10,6 +10,7 @@ const connectDb = () => {
   db.once('open', function() {
     console.log(chalk.hex('#009432').inverse(' Mongo connected \n'))
   })
+  // mongoose.set('debug', true)
   return mongoose
 }
 
