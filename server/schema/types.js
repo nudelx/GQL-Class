@@ -14,7 +14,7 @@ const Book = require('../db/mongo/models/books')
 /// MySql
 const Stars = require('../db/mysql/models/stars')
 
-//els
+//ElasticSearch
 const elsRun = require('../db/els/els')
 
 const BookType = new GraphQLObjectType({
