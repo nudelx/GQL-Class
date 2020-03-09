@@ -34,6 +34,7 @@ const BookType = new GraphQLObjectType({
       type: StarsType,
       resolve: async (parent, args) => {
         // return db.authors.find(item => item.id === parent.author_id)
+        // console.log('here')
         const res = await Stars.findAll({
           where: {
             bookId: parent._id.toString()
