@@ -44,3 +44,8 @@
 .bookCard {
   font-size: 120px;
 }
+
+.inline {
+  display: inline-block;
+  margin: 20px;
+}

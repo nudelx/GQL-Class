@@ -3,11 +3,11 @@ import { getBookIcon } from './utils'
 
 export default ({ book }) => {
   return (
-    <div className="card small">
+    <div className="card small inline ">
       <div className="card-header">Header</div>
       <div className="bookCard">
         <span role="img" aria-label="img">
-          {getBookIcon(1)}
+          {getBookIcon()}
         </span>
       </div>
       <div className="card-body">

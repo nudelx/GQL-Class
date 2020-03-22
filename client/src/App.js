@@ -10,6 +10,11 @@ function App() {
       </div>
       <div className="paper ">
         <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </div>
     </div>
   )
