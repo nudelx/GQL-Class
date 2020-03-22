@@ -23,13 +23,13 @@ function App() {
   const { loading, error, data } = useQuery(GET_BOOKS)
   if (loading)
     return (
-      <div className="card  ">
+      <div className="paper  ">
         <p>Loading...</p>
       </div>
     )
   if (error)
     return (
-      <div className="card  ">
+      <div className="paper  ">
         <p>Error :(</p>
       </div>
     )
