@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.small {
+  width: 300px;
+}
+
+.bookCard {
+  font-size: 120px;
+}
