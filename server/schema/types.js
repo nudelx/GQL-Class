@@ -49,7 +49,7 @@ const BookType = new GraphQLObjectType({
         // return db.authors.find(item => item.id === parent.author_id)
         const query = elsRun.buildQuery(parent.movieId)
         const res = await elsRun.run(query)
-        return res[0]._source
+        return res[0] && res[0]._source
       }
     }
   })
