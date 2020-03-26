@@ -1,27 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
-import Card from './card'
+
 import { useQuery } from '@apollo/react-hooks'
 import { GET_BOOKS } from './gql/fetch'
 import Loading from './loading'
 import Error from './error'
+import Header from './header'
+import Page from './page'
 
 function App() {
-  const { loading, error, data } = useQuery(GET_BOOKS)
+  const [showModal, setShowModal] = useState(false)
+  const { loading, error, data } = useQuery(GET_BOOKS, {
+    // pollInterval: 20000
+  })
 
   if (loading) return <Loading />
   if (error) return <Error error={error} />
 
+  console.log('showModal', showModal)
   return (
     <div className="App">
-      <div className="header">
-        <h3> GQL DEMO </h3>
-      </div>
-      <div className="paper ">
-        {data.books.map((b, index) => (
-          <Card index={index + 1} key={b.id} {...b} />
-        ))}
-      </div>
+      <Header title={'Book Shelf'} onAdd={() => setShowModal(!showModal)} />
+      <Page books={data.books} />
     </div>
   )
 }
