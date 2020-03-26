@@ -7,6 +7,7 @@ import Loading from './loading'
 import Error from './error'
 import Header from './header'
 import Page from './page'
+import Modal from './modal'
 
 function App() {
   const [showModal, setShowModal] = useState(false)
@@ -22,6 +23,10 @@ function App() {
     <div className="App">
       <Header title={'Book Shelf'} onAdd={() => setShowModal(!showModal)} />
       <Page books={data.books} />
+      <Modal
+        showModal={showModal}
+        setShowModal={() => setShowModal(!showModal)}
+      />
     </div>
   )
 }
