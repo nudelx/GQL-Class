@@ -21,7 +21,7 @@ export default ({ showModal, setShowModal }) => {
           <h4 className="modal-title">Add New Book</h4>
           <h5 className="modal-subtitle">Fill all required fields</h5>
           <div className="modal-text">
-            <BookForm />
+            <BookForm onCancel={setShowModal} />
           </div>
         </div>
       </div>

@@ -1,27 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-export default ({ onChange }) => {
-  const [selected, setSelected] = React.useState(0)
+export default ({ onChange, value }) => {
   const makeSelection = e => {
     const selected = e.target
     const children = [...e.currentTarget.children]
     const index = children.indexOf(selected)
-    children.forEach((e, i) => {
-      i <= index ? e.classList.add('selected') : e.classList.remove('selected')
-    })
-
-    setSelected(index + 1)
+    onChange(index + 1)
   }
-  useEffect(() => {
-    typeof onChange === 'function' && onChange(selected)
-  }, [onChange, selected])
   return (
     <div className="starsHolder" onClick={makeSelection}>
-      <div className="inputStar "></div>
-      <div className="inputStar "></div>
-      <div className="inputStar "></div>
-      <div className="inputStar"></div>
-      <div className="inputStar"></div>
+      {[1, 2, 3, 4, 5].map((v, i) => {
+        return (
+          <div
+            key={v}
+            className={`inputStar ${i < value ? 'selected' : ''}`}
+          ></div>
+        )
+      })}
     </div>
   )
 }

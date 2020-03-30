@@ -78,3 +78,7 @@
   display: inline-block;
   cursor: pointer;
 }
+
+.error {
+  border-color: red;
+}
